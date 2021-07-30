@@ -10,7 +10,7 @@ class SignupPage extends Component {
 
     updateMessage = (msg) => {
         this.setState({message: msg});
-      }
+    }
 
     render(){
         return (
@@ -22,6 +22,5 @@ class SignupPage extends Component {
         );
     }
 }
-
 
 export default SignupPage;

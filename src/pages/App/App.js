@@ -18,19 +18,16 @@ class App extends Component {
       user: userService.getUser(),
     };
   }
-
     handleLogout = () => {
         userService.logout();
         this.setState({user: null})
   }
-
     handleSignupOrLogin = () =>{
         this.setState({user: userService.getUser()});
   }
 
   render() {
     const { user } = this.state;
-
     return (
          <div className="App">
             <header className="container-fluid">
@@ -44,7 +41,7 @@ class App extends Component {
               handleLogout={this.handleLogout}
             />
           }/>
-          <Route exact path='/settings' render={props =>
+          <Route exact path='/settings' render={() =>
             <SettingsPage
             />
           }/>

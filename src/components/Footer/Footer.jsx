@@ -8,7 +8,7 @@ const Footer = () => {
             <div>
                 <div className='row'>
                     <div className='text-center py-3'>
-                        Made by Angela Choi
+                        Made with ❤️ by Angela Choi
                     </div>
                 </div>
             </div>
