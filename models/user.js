@@ -16,7 +16,7 @@ userSchema.set('toJSON', {
       delete ret.password;
       return ret;
     }
-  });
+});
 
 userSchema.pre('save', function(next) {
     const user = this;
@@ -26,10 +26,10 @@ userSchema.pre('save', function(next) {
       user.password = hash;
       next();
     });
-  });
+});
 
-  userSchema.methods.comparePassword = function(tryPassword, cb) {
+userSchema.methods.comparePassword = function(tryPassword, cb) {
     bcrypt.compare(tryPassword, this.password, cb);
-  };
+};
   
 module.exports = model('User', userSchema);

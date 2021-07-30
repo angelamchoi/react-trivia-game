@@ -21,7 +21,7 @@ if(process.env.NODE_ENV === 'production') {
 
 // API routes
 app.use('/api/users', require('./routes/api/users'));
-app.use(require("./config/auth"));
+app.use(require('./config/auth'));
 
 // React App entry point (Production only)
 app.get('/*', function(req, res) {
