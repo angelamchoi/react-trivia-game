@@ -12,71 +12,64 @@ import Footer from "../../components/Footer/Footer";
 import userService from "../../utils/userService";
 
 class App extends Component {
-  constructor() {
+    constructor() {
     super();
     this.state = {
       user: userService.getUser(),
     };
   }
 
-  handleSignupOrLogin = () => {
-    console.log("handleSignupOrLogin");
-    this.setState({ user: userService.getUser() });
-  };
+    handleLogout = () => {
+        userService.logout();
+        this.setState({user: null})
+  }
 
-  handleLogout = () => {
-    console.log("handleLogout");
-    userService.logout();
-    this.setState({ user: null });
-  };
+    handleSignupOrLogin = () =>{
+        this.setState({user: userService.getUser()});
+  }
 
   render() {
     const { user } = this.state;
+
     return (
-      <div className="App">
-        <header className="container-fluid">
-          <NavBar user={user} handleLogout={this.handleLogout} />
-        </header>
-        <main class="container-fluid">
-          <Switch>
-            <Route exact path="/" render={() => <HomePage />} />
-            <Route
-              exact
-              path="/settings"
-              render={() =>
-                userService.getUser() ? (
-                  <SettingsPage user={user} />
-                ) : (
-                  <Redirect to="/login" />
-                )
-              }
+         <div className="App">
+            <header className="container-fluid">
+           <NavBar user={user} handleLogout={this.handleLogout} />
+         </header>
+         <main class="container-fluid">
+         <Switch>
+          <Route exact path='/' render={() =>
+            <HomePage
+              user={user}
+              handleLogout={this.handleLogout}
             />
-            <Route exact path="/quiz" render={() => <QuizPage />} />
-            <Route
-              exact
-              path="/signup"
-              render={({ history }) => (
-                <SignupPage
-                  history={history}
-                  handleSignupOrLogin={this.handleSignupOrLogin}
-                />
-              )}
+          }/>
+          <Route exact path='/settings' render={props =>
+            <SettingsPage
             />
-            <Route
-              exact
-              path="/login"
-              render={({ history }) => (
-                <LoginPage
-                  history={history}
-                  handleSignupOrLogin={this.handleSignupOrLogin}
-                />
-              )}
+          }/>
+          <Route exact path='/signup' render={({ history }) =>
+            <SignupPage
+              history={history}
+              handleSignupOrLogin={this.handleSignupOrLogin}
             />
-          </Switch>
+          }/>
+          <Route exact path='/login' render={({history}) =>
+            <LoginPage history={history} handleSignupOrLogin={this.handleSignupOrLogin}/>
+          }/>
+          <Route exact path='/quiz' render={() =>
+            userService.getUser() ?
+            <QuizPage
+            user ={user}
+            />
+            :
+            <Redirect to='/login'/>
+          }/>
+        </Switch>
         </main>
         <Footer />
-      </div>
-    );
+       </div>
+   );
   }
 }
 
