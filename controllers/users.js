@@ -41,7 +41,6 @@ function createJWT(user) {
   return jwt.sign(payload, SECRET, options);
 }
 
-
 module.exports = {
     signup,
     login,

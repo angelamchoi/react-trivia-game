@@ -4,7 +4,7 @@ import '../LogoutPage/LogoutPage.css'
 function LogoutPage(props) {
     return (
         <div className="LogoutPage-body">
-            See you soon!
+            See you soon!✌️
         </div>
     )
 }
