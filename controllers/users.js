@@ -32,13 +32,11 @@ async function login(req, res) {
 }
 
 function createJWT(user) {
-  const payload = {
-    user,
-  };
-  const options = {
-    expiresIn: "24h",
-  };
-  return jwt.sign(payload, SECRET, options);
+  return jwt.sign(
+    {user}, // data payload
+    SECRET,
+    {expiresIn: '24h'}
+  );
 }
 
 module.exports = {
