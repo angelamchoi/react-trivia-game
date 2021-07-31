@@ -63,6 +63,7 @@ class App extends Component {
           <Route exact path="/logout" render={() => <LogoutPage />} />
           <Route exact path="/create" render={() => <CreatePage />} />
           <Route exact path="/quiz" render={() => <QuizPage />} />
+          <Route exact path="/favs" render={() => <FavsPage />} />
         </Switch>
       </div>
     );
