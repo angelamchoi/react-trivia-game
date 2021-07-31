@@ -4,7 +4,7 @@ import './QuizPage.css'
 const QuizPage = (props) => {
     return (
         <div className='QuizPage'>
-        <h1>Trivia Page! 🎉</h1>
+        <h1>Let's play trivia! 🎉</h1>
     </div> 
     
     );

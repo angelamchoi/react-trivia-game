@@ -12,9 +12,10 @@ const NavBar = ({user, handleLogout}) => {
             <span className='NavBar-welcome'>Welcome, {user.name}!</span>
             <span className="NavBar-links">
         <br />
-        <Link to="/quiz">trivia </Link>&nbsp; | &nbsp;
+        <Link to="/quiz">play trivia </Link>&nbsp; | &nbsp;
         <Link to="/create">create</Link>&nbsp; | &nbsp;
         <Link to="/favs">favs</Link>&nbsp; | &nbsp;
+        
       </span>
           </div>
         </div>

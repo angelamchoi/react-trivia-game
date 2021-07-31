@@ -6,7 +6,7 @@ import './CreatePage.css'
 const CreatePage = (props) => {
     return (
         <div>
-            <h1> 💡Create Page!</h1>
+            <h1> 💡Create a Trivia Question!</h1>
             <QuizForm />
         </div>
     

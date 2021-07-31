@@ -6,6 +6,7 @@ class QuizForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      category: "",  
       question: "",
       choice1: "",
       choice2: "",
