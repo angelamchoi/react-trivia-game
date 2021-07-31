@@ -1,5 +1,6 @@
 import { React, Component } from "react";
 import { Link } from 'react-router-dom';
+import quizService from "../../utils/quizService";
 import "../QuizForm/QuizForm.css";
 
 class QuizForm extends Component {
@@ -16,57 +17,70 @@ class QuizForm extends Component {
     };
   }
 
-handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+  handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({ [name]: value });
   };
 
-  
-// handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       await userService.signup(this.state);
-//       this.props.handleSignupOrLogin()
-//       this.props.history.push('/');
-//     } catch (err) {
-//       this.props.updateMessage(err.message);
-//     }
-//   }
+async updateQuiz() {
+    let quiz;
+    if (this.updatePage) {
+      quiz = await quizService.update({ ...this.state });
+    } else {
+      quiz = await quizService.create({ ...this.state });
+    }
+    return quiz;
+}
 
+handleSubmit = async (e) => {
+    e.preventDefault();
+    const quiz = await this.updateQuiz();
+    if (quiz) {
+      this.props.handleUpdateQuizzes();
+      this.props.history.push("/");
+    } else {
+      window.confirm("quizUpdate failed");
+    }
+  };
 
 render() {
     return (
       <div className="QuizForm-body">
         <form className="form-horizontal" onSubmit={this.handleSubmit} >
-          <div className="form-group">
+        <div className="form-group">
             <div className="col-sm-12">
-              <input type="text" className="form-control" placeholder="question" value={this.state.question} name="question" onChange={this.handleChange} />
+              <input type="text" className="form-control" placeholder="category" value={this.state.question} name="category" onChange={(e) => this.handleChange(e)} />
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="choice1" className="form-control" placeholder="choice 1" value={this.state.email} name="choice1" onChange={this.handleChange} />
+              <input type="text" className="form-control" placeholder="question" value={this.state.question} name="question" onChange={(e) => this.handleChange(e)} />
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="choice2" className="form-control" placeholder="choice 2" value={this.state.password} name="choice2" onChange={this.handleChange} />
+              <input type="choice1" className="form-control" placeholder="choice 1" value={this.state.email} name="choice1" onChange={(e) => this.handleChange(e)} />
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="choice3" className="form-control" placeholder="Choice 3" value={this.state.passwordConf} name="choice3" onChange={this.handleChange} />
+              <input type="choice2" className="form-control" placeholder="choice 2" value={this.state.password} name="choice2" onChange={(e) => this.handleChange(e)} />
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="choice4" className="form-control" placeholder="Choice 4" value={this.state.passwordConf} name="choice4" onChange={this.handleChange} />
+              <input type="choice3" className="form-control" placeholder="choice 3" value={this.state.passwordConf} name="choice3" onChange={(e) => this.handleChange(e)} />
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="answer" className="form-control" placeholder="answer" value={this.state.passwordConf} name="answer" onChange={this.handleChange} />
+              <input type="choice4" className="form-control" placeholder="choice 4" value={this.state.passwordConf} name="choice4" onChange={(e) => this.handleChange(e)} />
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="col-sm-12">
+              <input type="answer" className="form-control" placeholder="answer" value={this.state.passwordConf} name="answer" onChange={(e) => this.handleChange(e)} />
             </div>
           </div>
           <div className="form-group">

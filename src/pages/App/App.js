@@ -9,6 +9,7 @@ import LogoutPage from "../LogoutPage/LogoutPage";
 import ResultPage from "../ResultPage/ResultPage";
 import SettingsPage from "../SettingsPage/SettingsPage";
 import FavsPage from "../FavsPage/FavsPage";
+import MyTriviasPage from "../MyTriviasPage/MyTriviasPage";
 import CreatePage from "../CreatePage/CreatePage";
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
@@ -64,6 +65,7 @@ class App extends Component {
           <Route exact path="/create" render={() => <CreatePage />} />
           <Route exact path="/quiz" render={() => <QuizPage />} />
           <Route exact path="/favs" render={() => <FavsPage />} />
+          <Route exact path="/mytrivias" render={() => <MyTriviasPage />} />
         </Switch>
       </div>
     );
