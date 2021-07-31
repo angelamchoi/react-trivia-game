@@ -10,7 +10,6 @@ class LoginPage extends Component {
   };
 
   handleChange = (e) => {
-    // TODO: implement in an elegant way
     const name = e.target.name
     const value = e.target.value
     this.setState({[name]: value})

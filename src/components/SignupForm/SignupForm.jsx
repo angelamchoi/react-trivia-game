@@ -15,7 +15,6 @@ class SignupForm extends Component {
   handleChange = (e) => {
     this.props.updateMessage('');
     this.setState({
-      // Using ES2015 Computed Property Names
       [e.target.name]: e.target.value
     });
   }
@@ -23,16 +22,10 @@ class SignupForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // attempt to sign up the user and save the token into local storage
       await userService.signup(this.state);
-
-      // after token in storage, tell react to refetch user from token
       this.props.handleSignupOrLogin()
-
-      // Successfully signed up - show GamePage
       this.props.history.push('/');
     } catch (err) {
-      // Invalid user data (probably duplicate email)
       this.props.updateMessage(err.message);
     }
   }
