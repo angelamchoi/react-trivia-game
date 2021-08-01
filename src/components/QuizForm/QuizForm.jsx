@@ -15,6 +15,7 @@ class QuizForm extends Component {
       choice4: "",
       answer: "",
     };
+    this.updatePage = props.match && props.match.params.id;
   }
 
   handleChange = (e) => {
@@ -22,7 +23,6 @@ class QuizForm extends Component {
       [e.target.name]: e.target.value,
     });
   };
-
 
 async updateQuiz() {
     let quiz;
@@ -38,7 +38,6 @@ handleSubmit = async (e) => {
     e.preventDefault();
     const quiz = await this.updateQuiz();
     if (quiz) {
-      // this.props.handleUpdateQuizzes();
       this.props.history.push("/");
     } else {
       window.confirm("quizUpdate failed");
@@ -48,7 +47,8 @@ handleSubmit = async (e) => {
 render() {
     return (
       <div className="QuizForm-body">
-        <form className="form-horizontal" onSubmit={this.handleSubmit} >
+        <form>
+          <div className ="form-horizontal">
         <div className="form-group">
             <div className="col-sm-12">
               <input type="text" className="form-control" placeholder="category" value={this.state.category} name="category" onChange={(e) => this.handleChange(e)} />
@@ -90,11 +90,11 @@ render() {
               <Link to='/'>Cancel</Link>
             </div>
           </div>
-        </form>
       </div>
+    </form>
+  </div>
     );
   }
 }
-
 
 export default QuizForm;
