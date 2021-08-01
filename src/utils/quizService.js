@@ -19,7 +19,7 @@ function create(quiz) {
   const options = {
     method: "POST",
     headers: {
-      "Content-type": "application/json",
+      'Content-type': 'application/json',
       Authorization: "Bearer " + tokenService.getToken(),
     },
     body: JSON.stringify(quiz),
@@ -32,7 +32,7 @@ function update(quiz) {
   const options = {
     method: "PUT",
     headers: {
-      "Content-type": "application/json",
+      'Content-type': 'application/json',
       Authorization: "Bearer " + tokenService.getToken(),
     },
     body: JSON.stringify(quiz),
@@ -44,7 +44,7 @@ function deleteOne(id) {
   const options = {
     method: "DELETE",
     headers: {
-      "Content-type": "application/json",
+      'Content-type': 'application/json',
       Authorization: "Bearer " + tokenService.getToken(),
     },
   };

@@ -12,6 +12,7 @@ import FavsPage from "../FavsPage/FavsPage";
 import MyTriviasPage from "../MyTriviasPage/MyTriviasPage";
 import CreatePage from "../CreatePage/CreatePage";
 import NavBar from "../../components/NavBar/NavBar";
+import QuizForm from "../../components/QuizForm/QuizForm";
 import Footer from "../../components/Footer/Footer";
 import userService from "../../utils/userService";
 
