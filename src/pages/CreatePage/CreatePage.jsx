@@ -8,7 +8,7 @@ class CreatePage extends Component {
     constructor() {
       super();
       this.state = {
-        category: "",
+        question: "",
         choice1: "",
         choice2: "",
         choice3: "",
@@ -16,11 +16,10 @@ class CreatePage extends Component {
         correctAnswer: "",
       };
     }
-
     render() {
         const { quiz } = this.state;
         return (
-           
+
             <div className="Quizform">
                 <h1> 💡Create a Trivia Question!</h1>
                 <div className="col md-3">

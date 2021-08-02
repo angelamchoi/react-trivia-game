@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import QuizForm from '../../components/QuizForm/QuizForm';
 import quizService from "../../utils/quizService";
 
+
+
 class MyTriviasPage extends Component {
     constructor() {
       super();

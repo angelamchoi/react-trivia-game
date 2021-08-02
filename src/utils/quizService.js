@@ -1,6 +1,5 @@
 import tokenService from "./tokenService";
-
-const BASE_URL = "/api/create/";
+const BASE_URL = "/api/create";
 
 function index() {
   return fetch(BASE_URL)
@@ -14,17 +13,58 @@ function getOne(id) {
     .catch((err) => console.log("err", err));
 }
 
-function create(quiz) {
-  console.log(quiz);
-  const options = {
+// function createQuiz(quizData) {
+//   console.log(quiz);
+//   const options = {
+//     method: "POST",
+//     headers: {
+//       'Content-type': 'application/json',
+//       'Authorization': "Bearer " + tokenService.getToken(),
+//     },
+//     body: JSON.stringify(quizData),
+//   };
+//   return fetch(BASE_URL, options).then((res) => res.json());
+// }
+
+function createQuiz(quizData) {
+  return fetch(
+    BASE_URL,
+    {
     method: "POST",
-    headers: {
+    headers: ({
       'Content-type': 'application/json',
-      Authorization: "Bearer " + tokenService.getToken(),
-    },
-    body: JSON.stringify(quiz),
-  };
-  return fetch(BASE_URL, options).then((res) => res.json());
+      'Authorization': "Bearer " + tokenService.getToken(),
+    }),
+    body: JSON.stringify(quizData),
+  }
+)
+  .then((res) => {
+  return res.json()
+})
+.then((data) => {
+  if (data.errMsg) throw data.errMsg
+  return data
+})
+}
+
+function getQuizData(id) {
+  return fetch(
+    BASE_URL + '/' + id,
+    {
+      method: 'GET',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + tokenService.getToken(),
+      }),
+    }
+  )
+    .then((res) => {
+      return res.json()
+    })
+    .then((data) => {
+      if (data.errMsg) throw data.errMsg
+      return data
+    })
 }
 
 function update(quiz) {
@@ -54,7 +94,10 @@ function deleteOne(id) {
 export default {
   index,
   getOne,
-  create,
+  // create,
+  createQuiz,
   update,
   delete: deleteOne,
+  getQuizData,
 };
+

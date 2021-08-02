@@ -31,6 +31,19 @@ function create(req, res) {
       res.status(400).json(err);
     });
   }
+
+  async function createQuiz(req, res, next) {
+    req.body.question = "question";
+    req.body.correctAnswer = correctAnswer;
+    const quiz = new Quiz(req.body);
+    try {
+      await quiz.save();
+      console.log("Quiz", quiz);
+      res.json(quiz);
+    } catch (err) {
+      console.log("Error", err);
+    }
+  }
   
 function index(req, res) {
     Quiz.find({}).then(function(quizzes) {
@@ -45,6 +58,7 @@ module.exports = {
     index,
     show,
     create,
+    createQuiz,
     delete: deleteOne,
     update
 }
