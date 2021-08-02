@@ -9,63 +9,8 @@ class QuizForm extends Component {
     super();
     this.state = {
       quizData: []
-    // this.state = {
-    //   question: "",
-    //   choice1: "",
-    //   choice2: "",
-    //   choice3: "",
-    //   choice4: "",
-    //   answer: "",
-    //   errMsg: "",
-    // };
-    // this.updatePage = props.match && props.match.params.id;
   }
 }
-
-  // handleChange = (e) => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
-// async updateQuiz() {
-//     let quiz;
-//     if (this.updatePage) {
-//       quiz = await quizService.update({ ...this.state });
-//     } else {
-//       quiz = await quizService.create({ ...this.state });
-//     }
-//     return quiz;
-// }
-
-// handleSubmit = async (e) => {
-//     e.preventDefault();
-//     const quiz = await this.updateQuiz();
-//     if (quiz) {
-//       this.props.history.push("/");
-//     } else {
-//       window.confirm("quizUpdate failed");
-//     }
-//   };
-// handleCreate = (e) => {
-//   e.preventDefault()
-//   let err = this.formHasErr()
-//   if (err) {
-//     this.setState({ errMsg: err })
-//     return;
-//   }
-//   createQuiz(this.state)
-//     .then((data) => {
-//       this.props.createQuizUpdate(data)
-//     })
-//     .catch((err) => { console.log(err) })
-// }
-
-// handleChange = (e) => {
-//   this.setState({
-//     [e.target.name]: e.target.value,
-//   });
-// };
 
 handleSubmit= (e) => {
   e.preventDefault();
@@ -92,8 +37,6 @@ handleSubmit= (e) => {
 })
   this.refs.myForm.reset();
 
-
-
 }
 
 
@@ -103,7 +46,7 @@ render() {
     <div>
     <form ref="myForm">
       <label>Question</label>
-      <input type="text" name="txtQuestion" ref="txtQuestion" />
+      <input type="text" name="txtQuestion" ref="txtQuestion"/>
       <label>Choice 1</label>
       <input type="text" name="textChoice1" ref="textChoice1" />
       <label>Choice 2</label>
@@ -118,12 +61,12 @@ render() {
     </form>
     <table>
       <tr>
-        <th>Question</th>
-        <th>Choice 1</th>
-        <th>Choice 2</th>
-        <th>Choice 3</th>
-        <th>Choice 4</th>
-        <th>Answer</th>
+        <th>Question:</th>
+        <th>Choice 1:</th>
+        <th>Choice 2:</th>
+        <th>Choice 3:</th>
+        <th>Choice 4:</th>
+        <th>Answer:</th>
       </tr>
       {quizData.map((quiz, i) => 
         <tr key={i}>
