@@ -21,7 +21,7 @@ class CreatePage extends Component {
         return (
 
             <div className="Quizform">
-                <h1> 💡Create a Trivia Question!</h1>
+                <h1> 💎My Trivias💎</h1>
                 <div className="col md-3">
                 <ul className="list-group">
                     <li className="list-group-item d-flex justify-content-between align-items-center">
