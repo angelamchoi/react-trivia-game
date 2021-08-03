@@ -14,71 +14,69 @@ class QuizForm extends Component {
   }
 }
 
+  handleSubmit= (e) => {
+    e.preventDefault();
+    let quizData = this.state.quizData;
+    let question= this.refs.txtQuestion.value;
+    let choice1= this.refs.textChoice1.value;
+    let choice2= this.refs.textChoice2.value;
+    let choice3= this.refs.textChoice3.value;
+    let choice4= this.refs.textChoice4.value;
+    let correctAnswer= this.refs.txtAnswer.value;
 
-
-handleSubmit= (e) => {
-  e.preventDefault();
-  let quizData = this.state.quizData;
-  let question= this.refs.txtQuestion.value;
-  let choice1= this.refs.textChoice1.value;
-  let choice2= this.refs.textChoice2.value;
-  let choice3= this.refs.textChoice3.value;
-  let choice4= this.refs.textChoice4.value;
-  let correctAnswer= this.refs.txtAnswer.value;
-
-if(this.state.act === 0){
-  let newQuiz={
-    "question": question,
-    "choice1": choice1,
-    "choice2": choice2,
-    "choice3": choice3,
-    "choice4": choice4,
-    "correctAnswer": correctAnswer
+  if(this.state.act === 0)
+  {
+    let newQuiz={
+      "question": question,
+      "choice1": choice1,
+      "choice2": choice2,
+      "choice3": choice3,
+      "choice4": choice4,
+      "correctAnswer": correctAnswer
+    }
+    quizData.push(newQuiz);
   }
-  quizData.push(newQuiz);
-}
-else{
-  let index = this.state.index;
-  quizData[index].question = question;
-  quizData[index].choice1 = choice1;
-  quizData[index].choice2 = choice2;
-  quizData[index].choice3 = choice3;
-  quizData[index].choice4 = choice4;
-  quizData[index].correctAnswer = correctAnswer;
-}
-  this.setState({
-    quizData: quizData,
-    act: 0
-})
-  this.refs.myForm.reset();
-
-}
-
-
-handleEdit = (i) => {
-  let quizData = this.state.quizData[i];
-  this.refs.txtQuestion.value = quizData.Question;
-  this.refs.txtChoice1.value = quizData.Choice1;
-  this.refs.txtChoice2.value = quizData.Choice2;
-  this.refs.txtChoice3.value = quizData.Choice3;
-  this.refs.txtChoice4.value = quizData.Choice4;
-  this.refs.txtAnswer.value = quizData.Answer;
-
-  this.setState({
-    quizData: quizData,
-    act:1,
-    index: i 
+  else
+  {
+    let index = this.state.index;
+    quizData[index].question = question;
+    quizData[index].choice1 = choice1;
+    quizData[index].choice2 = choice2;
+    quizData[index].choice3 = choice3;
+    quizData[index].choice4 = choice4;
+    quizData[index].correctAnswer = correctAnswer;
+  }
+    this.setState({
+      quizData: quizData,
+      act: 0
   })
-}
+    this.refs.myForm.reset();
 
+  }
 
-handleDelete = (i) =>{
-   let quizData = this.state.quizData;
-   quizData.splice(i,1);
-   this.setState({
+  handleEdit = (i) => {
+    let quizData = this.state.quizData[i];
+    this.refs.Question.value = quizData.Question;
+    this.refs.Choice1.value = quizData.Choice1;
+    this.refs.Choice2.value = quizData.Choice2;
+    this.refs.Choice3.value = quizData.Choice3;
+    this.refs.Choice4.value = quizData.Choice4;
+    this.refs.Answer.value = quizData.Answer;
+
+    this.setState({
+      quizData: quizData,
+      act:1,
+      index: i 
+    })
+  }
+
+  handleDelete = (i) =>{
+    let quizData = this.state.quizData;
+    quizData.splice(i,1);
+    this.setState({
      quizData: quizData
-   });
- }
+    });
+  }
 
 render() {
   let quizData = this.state.quizData;
