@@ -44,24 +44,24 @@ handleSubmit= (e) => {
 }
 
 
-// handleEdit(i) {
-//   let quizData = this.state.quizData;
-//   this.refs.txtQuestion.value = quizData.Question;
-//   this.refs.txtAnswer.value = quizData.Answer;
-//   this.refs.txtChoice1.value = quizData.Choice1;
-//   this.refs.txtChoice2.value = quizData.Choice2;
-//   this.refs.txtChoice3.value = quizData.Choice3;
-//   this.refs.txtChoice4.value = quizData.Choice4;
+handleEdit(i) {
+  let quizData = this.state.quizData[i];
+  this.refs.txtQuestion.value = quizData.Question;
+  this.refs.txtAnswer.value = quizData.Answer;
+  this.refs.txtChoice1.value = quizData.Choice1;
+  this.refs.txtChoice2.value = quizData.Choice2;
+  this.refs.txtChoice3.value = quizData.Choice3;
+  this.refs.txtChoice4.value = quizData.Choice4;
 
-//   this.setState({
-//     quizData: quizData,
-//     act:1,
-//     index: i 
-//   })
-// }
+  this.setState({
+    quizData: quizData,
+    act:1,
+    index: i 
+  })
+}
 
 
- handleDelete = (i) =>{
+handleDelete = (i) =>{
    let quizData = this.state.quizData;
    quizData.splice(i,1);
    this.setState({
@@ -95,7 +95,7 @@ render() {
         <li key={i} className="myList">
         {i+1}. {quiz.question}, {quiz.choice1}, {quiz.choice2}, {quiz.choice3}, {quiz.choice4}, {quiz.correctAnswer}
         <button onClick={(e) => this.handleDelete(i)}>Delete</button>
-        <button onClick={(e) => this.handleDelete(i)}>Edit</button>
+        <button onClick={(e) => this.handleEdit(i)}>Edit</button>
         </li>
         )}
       </pre>
