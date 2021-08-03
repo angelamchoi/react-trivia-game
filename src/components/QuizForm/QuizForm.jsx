@@ -26,6 +26,7 @@ handleSubmit= (e) => {
   let choice4= this.refs.textChoice4.value;
   let correctAnswer= this.refs.txtAnswer.value;
 
+if(this.state.act === 0){
   let newQuiz={
     "question": question,
     "choice1": choice1,
@@ -35,23 +36,33 @@ handleSubmit= (e) => {
     "correctAnswer": correctAnswer
   }
   quizData.push(newQuiz);
-
+}
+else{
+  let index = this.state.index;
+  quizData[index].question = question;
+  quizData[index].choice1 = choice1;
+  quizData[index].choice2 = choice2;
+  quizData[index].choice3 = choice3;
+  quizData[index].choice4 = choice4;
+  quizData[index].correctAnswer = correctAnswer;
+}
   this.setState({
-    quizData: quizData
+    quizData: quizData,
+    act: 0
 })
   this.refs.myForm.reset();
 
 }
 
 
-handleEdit(i) {
+handleEdit = (i) => {
   let quizData = this.state.quizData[i];
   this.refs.txtQuestion.value = quizData.Question;
-  this.refs.txtAnswer.value = quizData.Answer;
   this.refs.txtChoice1.value = quizData.Choice1;
   this.refs.txtChoice2.value = quizData.Choice2;
   this.refs.txtChoice3.value = quizData.Choice3;
   this.refs.txtChoice4.value = quizData.Choice4;
+  this.refs.txtAnswer.value = quizData.Answer;
 
   this.setState({
     quizData: quizData,
@@ -94,8 +105,8 @@ render() {
         {quizData.map((quiz, i) => 
         <li key={i} className="myList">
         {i+1}. {quiz.question}, {quiz.choice1}, {quiz.choice2}, {quiz.choice3}, {quiz.choice4}, {quiz.correctAnswer}
-        <button onClick={(e) => this.handleDelete(i)}>Delete</button>
-        <button onClick={(e) => this.handleEdit(i)}>Edit</button>
+        <button onClick={() => this.handleDelete(i)}>Delete</button>
+        <button onClick={() => this.handleEdit(i)}>Edit</button>
         </li>
         )}
       </pre>
