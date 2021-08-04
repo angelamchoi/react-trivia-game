@@ -44,7 +44,7 @@ render() {
         <Route
           exact
           path="/"
-          render={() => <HomePage user={this.state.user} />}
+          render={() => <CreatePage user={this.state.user} />}
         />
         <Route
           exact

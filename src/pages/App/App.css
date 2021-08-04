@@ -11,6 +11,10 @@ main {
     justify-content: center;
   }
 
+  input {
+    width: 100%;
+  }
+
 * {
   font-family: 'Jura', sans-serif;
   scrollbar-width: thin;

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import quizService from "../../utils/quizService";
 import "../QuizForm/QuizForm.css";
 
+
 class QuizForm extends Component {
   constructor() {
     super();
@@ -12,8 +13,6 @@ class QuizForm extends Component {
       index : '',
   }
 }
-
-
 
   handleSubmit= (e) => {
     e.preventDefault();
@@ -88,8 +87,11 @@ render() {
     <div className = "form">
     <form ref="myForm">
       <h2>💡Create a Trivia Question!</h2>
+      <div className ="card">
+        <div className = "col-sm-12">
       <label>Question:</label>
-      <input type="text" name="txtQuestion" ref="txtQuestion" placeholder="question"/>
+  
+      <input type="textarea" name="txtQuestion" ref="txtQuestion" placeholder="enter question here"/>
       <label>A:</label>
       <input type="text" name="txtChoice1" ref="txtChoice1" placeholder="choice 1" />
       <label>B:</label>
@@ -101,91 +103,24 @@ render() {
       <label>Answer:</label>
       <input type="text" name="txtAnswer" ref="txtAnswer"placeholder="correct answer" />
       <button type="submit" onClick={this.handleSubmit} className="btn btn-success">Submit</button>
+      </div>
+      </div>
     </form>
     <h2>💭My Trivia Questions</h2>
-    <table>
       {quizData.map((quiz, i) => 
-        <li key={i} className="myList">
+        <div className="card w-75" key={i} className="myList">
         {i+1}. {quiz.question}, {quiz.choice1}, {quiz.choice2}, {quiz.choice3}, {quiz.choice4}, {quiz.correctAnswer}
         <button onClick={() => this.handleDelete(i)} className="btn btn-danger">Delete</button>
         <button onClick={() => this.handleEdit(i)} className="btn btn-info">Edit</button>
-        </li>
-)} 
-    </table>
-    </div>
+        </div>
+        
+        )} 
+      </div>
+
+  
+   
+    
   );
 }
 }
-    
 export default QuizForm;
-
-// formHasErr = () => {
-//   // Check if any empty boxes
-//   if (!
-//     (this.state.question &&
-//       this.state.choice1 &&
-//       this.state.choice2 &&
-//       this.state.choice3 &&
-//       this.state.choice4 &&
-//       this.state.correctAnswer)
-//   ) return "Please Ensure All Boxes are Filled"
-  
-//   this.setState({
-//     errMsg: ''
-//   })
-
-//   return false;
-// }
-
-// render() {
-
-//   // let errMsg = this.state.errMsg ? <p className="Form-Error">{this.state.errMsg}</p> : null
-//     return (
-//       <div className="QuizForm-body">
-//         <form className="Create-Quiz-Form" onSubmit={this.handleCreate}>
-//           <div className ="form-horizontal">
-//           <div className="form-group">
-//             <div className="col-sm-12">
-//               <input type="text" className="form-control" placeholder="question" value={this.state.question} name="question" onChange={(e) => this.handleChange(e)} />
-//             </div>
-//           </div>
-//           <div className="form-group">
-//             <div className="col-sm-12">
-//               <input type="choice1" className="form-control" placeholder="choice 1" value={this.state.choice1} name="choice1" onChange={(e) => this.handleChange(e)} />
-//             </div>
-//           </div>
-//           <div className="form-group">
-//             <div className="col-sm-12">
-//               <input type="choice2" className="form-control" placeholder="choice 2" value={this.state.choice2} name="choice2" onChange={(e) => this.handleChange(e)} />
-//             </div>
-//           </div>
-//           <div className="form-group">
-//             <div className="col-sm-12">
-//               <input type="choice3" className="form-control" placeholder="choice 3" value={this.state.choice3} name="choice3" onChange={(e) => this.handleChange(e)} />
-//             </div>
-//           </div>
-//           <div className="form-group">
-//             <div className="col-sm-12">
-//               <input type="choice4" className="form-control" placeholder="choice 4" value={this.state.choice4} name="choice4" onChange={(e) => this.handleChange(e)} />
-//             </div>
-//           </div>
-//           <div className="form-group">
-//             <div className="col-sm-12">
-//               <input type="answer" className="form-control" placeholder="answer" value={this.state.answer} name="answer" onChange={(e) => this.handleChange(e)} />
-//             </div>
-//           </div>
-//           <div className="form-group">
-//             <div className="col-sm-12 text-center">
-    
-//              <button className="btn btn-default" >Create</button>&nbsp;&nbsp; 
-//               <Link to='/'>Cancel</Link>
-//             </div>
-//           </div>
-//       </div>
-//     </form>
-//   </div>
-//     );
-//   }
-// }
-
-
