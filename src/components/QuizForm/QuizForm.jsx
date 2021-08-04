@@ -106,19 +106,22 @@ render() {
       </div>
       </div>
     </form>
+  
     <h2>💭My Trivia Questions</h2>
+    <div className ="card">
+      <div className ="card-grid">
       {quizData.map((quiz, i) => 
-        <div className="card w-75" key={i} className="myList">
+        <div className="card-grid" key={i} className="myList">
         {i+1}. {quiz.question}, {quiz.choice1}, {quiz.choice2}, {quiz.choice3}, {quiz.choice4}, {quiz.correctAnswer}
         <button onClick={() => this.handleDelete(i)} className="btn btn-danger">Delete</button>
         <button onClick={() => this.handleEdit(i)} className="btn btn-info">Edit</button>
         </div>
         
+        
         )} 
       </div>
-
-  
-   
+ </div> 
+ </div>
     
   );
 }
