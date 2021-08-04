@@ -23,8 +23,6 @@ class App extends Component {
   super();
   this.state = {
     user: userService.getUser(),
-    cards:"",
-    setCards: "",
   };
 }
   handleLogout = () => {
@@ -34,6 +32,7 @@ class App extends Component {
   handleSignupOrLogin = () =>{
       this.setState({user: userService.getUser()});
 }
+
 render() {
   const { user, cards, setCards } = this.state;
   return (

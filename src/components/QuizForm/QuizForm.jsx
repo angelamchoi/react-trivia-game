@@ -13,6 +13,8 @@ class QuizForm extends Component {
   }
 }
 
+
+
   handleSubmit= (e) => {
     e.preventDefault();
     let quizData = this.state.quizData;
@@ -26,7 +28,7 @@ class QuizForm extends Component {
 
   if(this.state.act === 0)
   {
-    let newQuiz={
+    let newQuiz = {
       "question": question,
       "choice1": choice1,
       "choice2": choice2,
@@ -76,10 +78,12 @@ class QuizForm extends Component {
     this.setState({
      quizData: quizData
     });
-  }
+  } 
+
 
 render() {
   let quizData = this.state.quizData;
+  console.log(quizData);
   return (
     <div className = "form">
     <form ref="myForm">
@@ -99,16 +103,15 @@ render() {
       <button type="submit" onClick={this.handleSubmit} className="btn btn-success">Submit</button>
     </form>
         <h2>💭My Trivia Questions</h2>
-      <pre>
-        { 
-          quizData.map((quiz, i) => 
+    <table>
+      {quizData.map((quiz, i) => 
         <li key={i} className="myList">
         {i+1}. {quiz.question}, {quiz.choice1}, {quiz.choice2}, {quiz.choice3}, {quiz.choice4}, {quiz.correctAnswer}
         <button onClick={() => this.handleDelete(i)} className="btn btn-danger">Delete</button>
-        <button onClick={() => this.handleEdit(i)} className="btn btn-warning">Edit</button>
+        <button onClick={() => this.handleEdit(i)} className="btn btn-info">Edit</button>
         </li>
-        )}
-      </pre>
+        )} 
+    </table>
     </div>
   );
 }
