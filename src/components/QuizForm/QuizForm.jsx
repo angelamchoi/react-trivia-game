@@ -57,7 +57,7 @@ class QuizForm extends Component {
   }
 
   handleEdit = (i) => {
-    let quizData = this.state.quizData[i];
+    let quizData = this.state.quizData;
     this.refs.txtQuestion.value = quizData.question;
     this.refs.txtChoice1.value = quizData.choice1;
     this.refs.txtChoice2.value = quizData.choice2;
@@ -67,7 +67,7 @@ class QuizForm extends Component {
 
     this.setState({
       quizData: quizData,
-      act:1,
+      act: 1,
       index: i 
     })
   }
@@ -102,7 +102,7 @@ render() {
       <input type="text" name="txtAnswer" ref="txtAnswer"placeholder="correct answer" />
       <button type="submit" onClick={this.handleSubmit} className="btn btn-success">Submit</button>
     </form>
-        <h2>💭My Trivia Questions</h2>
+    <h2>💭My Trivia Questions</h2>
     <table>
       {quizData.map((quiz, i) => 
         <li key={i} className="myList">
@@ -110,7 +110,7 @@ render() {
         <button onClick={() => this.handleDelete(i)} className="btn btn-danger">Delete</button>
         <button onClick={() => this.handleEdit(i)} className="btn btn-info">Edit</button>
         </li>
-        )} 
+)} 
     </table>
     </div>
   );
