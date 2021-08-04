@@ -1,6 +1,5 @@
 import { React, Component } from "react";
 import { Link } from 'react-router-dom';
-// import { createQuiz } from '../../utils/quizService';
 import quizService from "../../utils/quizService";
 import "../QuizForm/QuizForm.css";
 
@@ -10,18 +9,19 @@ class QuizForm extends Component {
     this.state = {
       quizData: [],
       act : 0, //starting at 0
-      index : ''
+      index : '',
   }
 }
 
   handleSubmit= (e) => {
     e.preventDefault();
     let quizData = this.state.quizData;
+
     let question= this.refs.txtQuestion.value;
-    let choice1= this.refs.textChoice1.value;
-    let choice2= this.refs.textChoice2.value;
-    let choice3= this.refs.textChoice3.value;
-    let choice4= this.refs.textChoice4.value;
+    let choice1= this.refs.txtChoice1.value;
+    let choice2= this.refs.txtChoice2.value;
+    let choice3= this.refs.txtChoice3.value;
+    let choice4= this.refs.txtChoice4.value;
     let correctAnswer= this.refs.txtAnswer.value;
 
   if(this.state.act === 0)
@@ -56,12 +56,12 @@ class QuizForm extends Component {
 
   handleEdit = (i) => {
     let quizData = this.state.quizData[i];
-    this.refs.Question.value = quizData.Question;
-    this.refs.Choice1.value = quizData.Choice1;
-    this.refs.Choice2.value = quizData.Choice2;
-    this.refs.Choice3.value = quizData.Choice3;
-    this.refs.Choice4.value = quizData.Choice4;
-    this.refs.Answer.value = quizData.Answer;
+    this.refs.txtQuestion.value = quizData.question;
+    this.refs.txtChoice1.value = quizData.choice1;
+    this.refs.txtChoice2.value = quizData.choice2;
+    this.refs.txtChoice3.value = quizData.choice3;
+    this.refs.txtChoice4.value = quizData.choice4;
+    this.refs.txtAnswer.value = quizData.answer;
 
     this.setState({
       quizData: quizData,
@@ -87,24 +87,25 @@ render() {
       <label>Question:</label>
       <input type="text" name="txtQuestion" ref="txtQuestion" placeholder="question"/>
       <label>A:</label>
-      <input type="text" name="textChoice1" ref="textChoice1" placeholder="choice 1" />
+      <input type="text" name="txtChoice1" ref="txtChoice1" placeholder="choice 1" />
       <label>B:</label>
-      <input type="text" name="textChoice2" ref="textChoice2" placeholder="choice 2" />
+      <input type="text" name="txtChoice2" ref="txtChoice2" placeholder="choice 2" />
       <label>C:</label>
-      <input type="text" name="textChoice3" ref="textChoice3" placeholder="choice 3" />
+      <input type="text" name="txtChoice3" ref="txtChoice3" placeholder="choice 3" />
       <label>D:</label>
-      <input type="text" name="textChoice4" ref="textChoice4" placeholder="choice 4"/>
+      <input type="text" name="txtChoice4" ref="txtChoice4" placeholder="choice 4"/>
       <label>Answer:</label>
       <input type="text" name="txtAnswer" ref="txtAnswer"placeholder="correct answer" />
-      <button type="submit" onClick={this.handleSubmit}>Submit</button>
+      <button type="submit" onClick={this.handleSubmit} className="btn btn-success">Submit</button>
     </form>
         <h2>💭My Trivia Questions</h2>
       <pre>
-        {quizData.map((quiz, i) => 
+        { 
+          quizData.map((quiz, i) => 
         <li key={i} className="myList">
         {i+1}. {quiz.question}, {quiz.choice1}, {quiz.choice2}, {quiz.choice3}, {quiz.choice4}, {quiz.correctAnswer}
-        <button onClick={() => this.handleDelete(i)}>Delete</button>
-        <button onClick={() => this.handleEdit(i)}>Edit</button>
+        <button onClick={() => this.handleDelete(i)} className="btn btn-danger">Delete</button>
+        <button onClick={() => this.handleEdit(i)} className="btn btn-warning">Edit</button>
         </li>
         )}
       </pre>
@@ -113,7 +114,7 @@ render() {
 }
 }
     
-
+export default QuizForm;
 
 // formHasErr = () => {
 //   // Check if any empty boxes
@@ -185,4 +186,3 @@ render() {
 // }
 
 
-export default QuizForm;

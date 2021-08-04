@@ -47,7 +47,7 @@ function create(req, res) {
   
 function index(req, res) {
     Quiz.find({}).then(function(quizzes) {
-      res.status(200).json(puppies);
+      res.status(200).json(quizzes);
     }).catch(function(err) {
       res.status(400).json(err);
     });
