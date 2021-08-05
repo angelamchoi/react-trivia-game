@@ -20,21 +20,37 @@ class App extends Component {
   this.state = {
     user: userService.getUser(),
     quizzes: [],
+    quiz: [],
     selectedQuiz: {},
     isEditing: false
   };
 }
   handleLogout = () => {
-      userService.logout();
-      this.setState({user: null})
+    userService.logout();
+    this.setState({user: null})
 }
+
+  async componentDidMount() {
+    await this.getQuiz();
+    if (this.state.user) {
+    this.setState({ quiz: this.state.user.quizzes });
+  }
+}
+
+  getQuiz = async () => {
+    const quizzes = await quizService.index();
+    this.setState({ quizzes });
+};
+
   handleSignupOrLogin = () =>{
-      this.setState({user: userService.getUser()});
+    this.setState({user: userService.getUser()});
 }
-addQuiz = (quiz) => this.setState({ quizzes: [...this.state.quizzes, quiz] });
+
+  addQuiz = (quiz) => 
+    this.setState({ quizzes: [...this.state.quizzes, quiz] });
 
   handleEditClicked = (selectedQuiz) =>
-    this.setState({ selectedQuiz, isEditing: true, hello: "word" });
+    this.setState({ selectedQuiz, isEditing: true });
 
   handleQuizUpdate = (updatedQuiz) => {
     const quizzes = this.quizzes.map((quiz) => {
@@ -46,13 +62,17 @@ addQuiz = (quiz) => this.setState({ quizzes: [...this.state.quizzes, quiz] });
 
     this.setState({ quizzes, isEditing: false });
   };
+
 render() {
+  const { quizzes, selectedQuiz, isEditing } = this.state;
   return (
     <div className="App">
       <header className="App-header">
-        <NavBar user={this.state.user} handleLogout={this.handleLogout} />
+        <NavBar 
+          user={this.state.user} 
+          handleLogout={this.handleLogout} 
+        />
       </header>
-      
       <Switch>
         <Route
           exact
@@ -79,12 +99,24 @@ render() {
             />
           )}
         />
+          <Route
+              exact
+              path="/create"
+              render={({ history }) => (
+                <QuizForm
+                  quiz={selectedQuiz}
+                  addQuiz={this.addQuiz}
+                  isEditing={isEditing}
+                />
+              )}
+          />
+                
         <Route exact path="/logout" render={() => <LogoutPage />} />
         <Route exact path="/create" render={() => <CreatePage />} />
         <Route exact path="/play" render={() => <QuizPage />} />
         <Route exact path="/mytrivias" render={() => <QuizList />} />
       </Switch>
-      
+      <Footer />
     </div>
   );
 }

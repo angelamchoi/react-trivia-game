@@ -8,7 +8,7 @@ var quizSchema = new Schema({
     choice2: {type: String, required: true},
     choice3:{type: String, required: true},
     choice4:{type: String, required: true},
-    correctAnswer: {type: String, required: true},
+    answer: {type: String, required: true},
 },{
     timestamps: true
 });
