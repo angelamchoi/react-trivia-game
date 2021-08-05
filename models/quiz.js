@@ -4,10 +4,10 @@ var Schema = mongoose.Schema;
 
 var quizSchema = new Schema({
     question: {type: String, required: true},
-    choice1: {type: String, required: true},
-    choice2: {type: String, required: true},
-    choice3:{type: String, required: true},
-    choice4:{type: String, required: true},
+    a: {type: String, required: true},
+    b: {type: String, required: true},
+    c: {type: String, required: true},
+    d: {type: String, required: true},
     answer: {type: String, required: true},
 },{
     timestamps: true

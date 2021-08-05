@@ -1,5 +1,5 @@
 import tokenService from "./tokenService";
-const BASE_URL = "/api/create";
+const BASE_URL = "/api/create/";
 
 function index() {
   return fetch(BASE_URL)
@@ -22,7 +22,7 @@ function create(quiz) {
     },
     body: JSON.stringify(quiz),
   };
-  return fetch(BASE_URL, options).then((res) => res.json());
+  return fetch(BASE_URL, options).then((res) => res.text());
 }
 
 
@@ -54,6 +54,7 @@ function deleteOne(id) {
 
 export default {
   index,
+  getOne,
   create,
   update,
   delete: deleteOne,

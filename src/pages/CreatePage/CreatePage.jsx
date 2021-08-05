@@ -10,7 +10,8 @@ export default class CreatePage extends React.Component {
     isEditing: false
   };
 
-  addQuiz = (quiz) => this.setState({ quizzes: [...this.state.quizzes, quiz] });
+  addQuiz = (quiz) => 
+    this.setState({ quizzes: [...this.state.quizzes, quiz] });
 
   handleEditClicked = (selectedQuiz) =>
     this.setState({ selectedQuiz, isEditing: true});

@@ -30,14 +30,15 @@ export default class QuizForm extends React.Component {
 
   clear = () => this.setState(initialState);
 
-handleSubmit = async (e) => {
-  e.preventDefault();
-    try {
-      const { isEditing, addQuiz, onQuizUpdate } = this.props;
-      if (isEditing) {
-        const updatedQuiz = await quizService.update({ ...this.state });
+  handleSubmit = async (e) => {
+    e.preventDefault();
+      try {
+        const { isEditing, addQuiz, onQuizUpdate } = this.props;
+        if (isEditing) {
+          const updatedQuiz = await quizService.update({ ...this.state });
+          this.props.history.push("/");
       } else {
-          const newQuiz = await quizService.create({ ...this.state });
+        const newQuiz = await quizService.create({ ...this.state });
       }
     } catch (error) {
       console.log(error);
@@ -46,10 +47,18 @@ handleSubmit = async (e) => {
     this.clear();
   };
 
+  async componentDidMount() {
+    if (this.props.match && this.props.match.params.id) {
+      const quiz = await quizService.getOne(this.props.match.params.id);
+      this.setState(quiz);
+      console.log(quiz);
+    }
+  }
+
   render() {
     const { a, b, c, d, question, answer } = this.state;
     return (
-      <form>
+      <form onSubmit={(e) => this.props.handleSubmit(e)}>
         <div className ="Form">
         <h2>🔮Create a trivia question</h2>
           <label>

@@ -5,13 +5,8 @@ const quizCtrl = require('../controllers/api/quiz');
 
 // protected routes
 router.use(require('../../config/auth'));
-router.post('/', checkAuth, quizCtrl.create);
-router.delete('/:id', checkAuth, quizCtrl.delete);
-router.put('/:id', checkAuth, quizCtrl.update);
-
-function checkAuth(req, res, next) {
-    if (req.user) return next();
-    return res.status(401).json({msg: 'Not Authorized'});
-}
+router.post('/create', quizCtrl.create);
+router.delete('/create/:id', quizCtrl.delete);
+router.put('/create/:id', quizCtrl.update);
 
 module.exports = router;
