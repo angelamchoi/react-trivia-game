@@ -13,8 +13,9 @@ const NavBar = ({user, handleLogout}) => {
             <span className="NavBar-links">
         <br />
         <Link to="/play">play trivia </Link>&nbsp; | &nbsp;
-        <Link to="/mytrivias">my trivias</Link>&nbsp; | &nbsp;
-        <Link to="/favs">favs</Link>&nbsp; | &nbsp;
+        <Link to="/create">create</Link>&nbsp; | &nbsp;
+        <Link to="/mytrivias">my trivias</Link>&nbsp; 
+        
         
       </span>
           </div>

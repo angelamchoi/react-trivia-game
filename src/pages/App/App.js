@@ -6,23 +6,22 @@ import QuizPage from "../QuizPage/QuizPage";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import LogoutPage from "../LogoutPage/LogoutPage";
-import ResultPage from "../ResultPage/ResultPage";
-import SettingsPage from "../SettingsPage/SettingsPage";
-import FavsPage from "../FavsPage/FavsPage";
 import CreatePage from "../CreatePage/CreatePage";
+import QuizList from "../../components/QuizList/QuizList";
 import NavBar from "../../components/NavBar/NavBar";
 import QuizForm from "../../components/QuizForm/QuizForm";
 import Footer from "../../components/Footer/Footer";
 import userService from "../../utils/userService";
 import quizService from "../../utils/quizService";
 
-
-
 class App extends Component {
   constructor() {
   super();
   this.state = {
     user: userService.getUser(),
+    quizzes: [],
+    selectedQuiz: {},
+    isEditing: false
   };
 }
   handleLogout = () => {
@@ -32,19 +31,33 @@ class App extends Component {
   handleSignupOrLogin = () =>{
       this.setState({user: userService.getUser()});
 }
+addQuiz = (quiz) => this.setState({ quizzes: [...this.state.quizzes, quiz] });
 
+  handleEditClicked = (selectedQuiz) =>
+    this.setState({ selectedQuiz, isEditing: true, hello: "word" });
+
+  handleQuizUpdate = (updatedQuiz) => {
+    const quizzes = this.quizzes.map((quiz) => {
+      if (quiz.a === updatedQuiz) {
+        return updatedQuiz;
+      }
+      return quiz;
+    });
+
+    this.setState({ quizzes, isEditing: false });
+  };
 render() {
-  const { user, cards, setCards } = this.state;
   return (
     <div className="App">
       <header className="App-header">
         <NavBar user={this.state.user} handleLogout={this.handleLogout} />
       </header>
+      
       <Switch>
         <Route
           exact
           path="/"
-          render={() => <CreatePage user={this.state.user} />}
+          render={() => <HomePage user={this.state.user} />}
         />
         <Route
           exact
@@ -67,10 +80,11 @@ render() {
           )}
         />
         <Route exact path="/logout" render={() => <LogoutPage />} />
-        <Route exact path="/mytrivias" render={() => <CreatePage />} />
+        <Route exact path="/create" render={() => <CreatePage />} />
         <Route exact path="/play" render={() => <QuizPage />} />
-        <Route exact path="/favs" render={() => <FavsPage />} />
+        <Route exact path="/mytrivias" render={() => <QuizList />} />
       </Switch>
+      
     </div>
   );
 }

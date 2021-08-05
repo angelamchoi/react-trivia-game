@@ -13,59 +13,19 @@ function getOne(id) {
     .catch((err) => console.log("err", err));
 }
 
-// function createQuiz(quizData) {
-//   console.log(quiz);
-//   const options = {
-//     method: "POST",
-//     headers: {
-//       'Content-type': 'application/json',
-//       'Authorization': "Bearer " + tokenService.getToken(),
-//     },
-//     body: JSON.stringify(quizData),
-//   };
-//   return fetch(BASE_URL, options).then((res) => res.json());
-// }
-
-function createQuiz(quizData) {
-  return fetch(
-    BASE_URL,
-    {
+function create(quiz) {
+  const options = {
     method: "POST",
-    headers: ({
-      'Content-type': 'application/json',
-      'Authorization': "Bearer " + tokenService.getToken(),
-    }),
-    body: JSON.stringify(quizData),
-  }
-)
-  .then((res) => {
-  return res.json()
-})
-.then((data) => {
-  if (data.errMsg) throw data.errMsg
-  return data
-})
+    headers: {
+      "Content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken(),
+    },
+    body: JSON.stringify(quiz),
+  };
+  return fetch(BASE_URL, options).then((res) => res.json());
 }
 
-function getQuizData(id) {
-  return fetch(
-    BASE_URL + '/' + id,
-    {
-      method: 'GET',
-      headers: new Headers({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + tokenService.getToken(),
-      }),
-    }
-  )
-    .then((res) => {
-      return res.json()
-    })
-    .then((data) => {
-      if (data.errMsg) throw data.errMsg
-      return data
-    })
-}
+
 
 function update(quiz) {
   console.log(quiz);
@@ -84,20 +44,18 @@ function deleteOne(id) {
   const options = {
     method: "DELETE",
     headers: {
-      'Content-type': 'application/json',
+      "Content-type": "application/json",
       Authorization: "Bearer " + tokenService.getToken(),
     },
   };
   return fetch(BASE_URL + id, options).then((res) => res.json());
 }
 
+
 export default {
   index,
-  getOne,
-  // create,
-  createQuiz,
+  create,
   update,
   delete: deleteOne,
-  getQuizData,
 };
 

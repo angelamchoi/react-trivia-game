@@ -74,14 +74,11 @@ const isLocalhost = Boolean(
                     'tabs for this page are closed. See http://bit.ly/CRA-PWA.'
                 );
   
-                // Execute callback
+      
                 if (config && config.onUpdate) {
                   config.onUpdate(registration);
                 }
               } else {
-                // At this point, everything has been precached.
-                // It's the perfect time to display a
-                // "Content is cached for offline use." message.
                 console.log('Content is cached for offline use.');
   
                 // Execute callback
