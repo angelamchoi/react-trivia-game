@@ -50,17 +50,17 @@ class QuizList extends Component {
     return (
       <div>
         <h1> 🔮My Trivias!</h1>
-        <div className="card">
+        <div className="card-list">
           <div className="card-grid">
             {this.state.quizzes.map((quiz, i) => (
               <div className="container">
-                <div className="card">
-                <div>{quiz.a} </div>
-                <div>{quiz.b} </div>
-                <div>{quiz.c} </div>
-                <div>{quiz.d} </div>
-                <div>{quiz.question} </div>
-                <div>{quiz.answer} </div>
+                <div className="card-list">
+                <div>Question: {quiz.question} </div>
+                <div>A: {quiz.a} </div>
+                <div>B: {quiz.b} </div>
+                <div>C: {quiz.c} </div>
+                <div>D: {quiz.d} </div>
+                <div>Answer: {quiz.answer} </div>
                 <button
                   type="submit"
                   className="btn btn-danger"

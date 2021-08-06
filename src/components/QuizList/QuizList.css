@@ -1,4 +1,4 @@
-.card {
+/* .card {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,4 +17,51 @@
     margin: 5rem 2rem;
   }
 
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: .25rem;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+    background-color: white;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    height: 400px;
+    width: 500px;
+}
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin: .5rem;
+   
+  }
+
+  .container {
+    max-width: 250px;
   
+  }
+
+
+.card-grid {
+    display: flex;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 10px;
+  }
+
+  
+.btn {
+    margin: 8px;
+    border-radius: .3em;
+    border: none;
+    cursor: pointer;
+  }
+
+  label {
+    font-size: 15px;
+  }
+
+  input {
+    width: 100%;
+  } */
