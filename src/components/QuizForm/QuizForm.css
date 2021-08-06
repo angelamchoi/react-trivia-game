@@ -12,12 +12,23 @@
     transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
   }
 
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin: .5rem;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 1rem 2rem;
+  }
+
 
 .card-grid {
     display: grid;
     align-items: center;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+    gap: 2rem;
   }
 
   

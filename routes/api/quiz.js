@@ -8,9 +8,10 @@ const quizCtrl = require('../../controllers/quiz');
 router.use(require('../../config/auth'));
 router.get('/', quizCtrl.index);
 router.post('/', quizCtrl.create);
+router.delete('/:id', quizCtrl.delete);
 router.get('/:id', quizCtrl.show);
 router.post('/quiz', quizCtrl.create);
-router.delete('/create/:id', quizCtrl.delete);
+
 router.put('/create/:id', quizCtrl.update);
 
 module.exports = router;

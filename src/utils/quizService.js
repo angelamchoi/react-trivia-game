@@ -30,7 +30,7 @@ function create(quiz) {
     },
     body: JSON.stringify(quiz),
   };
-  return fetch(BASE_URL, options).then((res) => res.text());
+  return fetch(BASE_URL, options).then((res) => res.json());
 }
 
 function update(quiz) {
@@ -54,7 +54,7 @@ function deleteOne(id) {
       Authorization: "Bearer " + tokenService.getToken(),
     },
   };
-  return fetch(BASE_URL + id, options).then((res) => res.json());
+  return fetch("/api/mytrivias" + id, options).then((res) => res.json());
 }
 
 
