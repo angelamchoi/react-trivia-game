@@ -16,40 +16,37 @@ import quizService from "../../utils/quizService";
 
 class App extends Component {
   constructor() {
-  super();
-  this.state = {
-    user: userService.getUser(),
-    quizzes: [],
-    quiz: [],
-    selectedQuiz: {},
-    isEditing: false
- 
-  };
-}
+    super();
+    this.state = {
+      user: userService.getUser(),
+      quizzes: [],
+      quiz: [],
+      selectedQuiz: {},
+      isEditing: false,
+    };
+  }
   handleLogout = () => {
     userService.logout();
-    this.setState({user: null})
-}
+    this.setState({ user: null });
+  };
 
   async componentDidMount() {
     await this.getQuiz();
     if (this.state.user) {
-    this.setState({ quiz: this.state.user.quizzes });
+      this.setState({ quiz: this.state.user.quizzes });
+    }
   }
-}
 
   getQuiz = async () => {
     const quizzes = await quizService.index();
     this.setState({ quizzes });
-};
+  };
 
-  handleSignupOrLogin = () =>{
-    this.setState({user: userService.getUser()});
-}
+  handleSignupOrLogin = () => {
+    this.setState({ user: userService.getUser() });
+  };
 
-  addQuiz = (quiz) => 
-    this.setState({ quizzes: [...this.state.quizzes, quiz] });
-
+  addQuiz = (quiz) => this.setState({ quizzes: [...this.state.quizzes, quiz] });
 
   handleQuizUpdate = (updatedQuiz) => {
     const quizzes = this.quizzes.map((quiz) => {
@@ -62,64 +59,65 @@ class App extends Component {
     this.setState({ quizzes });
   };
 
-render() {
-  const { quizzes, selectedQuiz } = this.state;
-  return (
-    <div className="App">
-      <header className="App-header">
-        <NavBar 
-          user={this.state.user} 
-          handleLogout={this.handleLogout} 
-        />
-      </header>
-      <Switch>
-        <Route
-          exact
-          path="/"
-          render={() => <HomePage user={this.state.user} />}
-        />
-        <Route
-          exact
-          path="/signup"
-          render={({ history }) => (
-            <SignupPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/login"
-          render={({ history }) => (
-            <LoginPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
-            />
-          )}
-        />
+  render() {
+    const { quizzes, selectedQuiz } = this.state;
+    return (
+      <div className="App">
+        <header className="App-header">
+          <NavBar user={this.state.user} handleLogout={this.handleLogout} />
+        </header>
+        <Switch>
           <Route
-              exact
-              path="/create"
-              render={({ history }) => (
-                <QuizForm
-                  quiz={selectedQuiz}
-                  addQuiz={this.addQuiz}
-                  // isEditing={isEditing}
-                  history={history}
-                />
-              )}
+            exact
+            path="/"
+            render={() => <HomePage user={this.state.user} />}
           />
-                
-        <Route exact path="/logout" render={() => <LogoutPage />} />
-        <Route exact path="/create" render={() => <CreatePage />} />
-        <Route exact path="/play" render={() => <QuizPage />} />
-        <Route exact path="/mytrivias" render={() => <QuizList quizzes = {quizzes} />} />
-      </Switch>
-      <Footer />
-    </div>
-  );
-}
+          <Route
+            exact
+            path="/signup"
+            render={({ history }) => (
+              <SignupPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/login"
+            render={({ history }) => (
+              <LoginPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/create"
+            render={({ history }) => (
+              <QuizForm
+                quiz={selectedQuiz}
+                addQuiz={this.addQuiz}
+                // isEditing={isEditing}
+                history={history}
+              />
+            )}
+          />
+
+          <Route exact path="/logout" render={() => <LogoutPage />} />
+          <Route exact path="/create" render={() => <CreatePage />} />
+          <Route exact path="/play" render={() => <QuizPage />} />
+          <Route
+            exact
+            path="/mytrivias"
+            render={() => <QuizList quizzes={quizzes} getQuiz={this.getQuiz} />}
+          />
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;

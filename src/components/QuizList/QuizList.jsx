@@ -29,9 +29,7 @@ class QuizList extends Component {
     console.log("handleDelete", id);
     const deletedQuiz = await quizService.delete(id);
     console.log(deletedQuiz);
-    // this.setState({
-    //   quizzes: deletedQuiz,
-    // });
+    await this.props.getQuiz();
   }
 
   handleQuizUpdate = async (updatedQuiz) => {
