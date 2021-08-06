@@ -8,13 +8,16 @@ const HomePage = (props) => {
 return (
     <div className='container-fluid'>
         <h1> quizzify</h1>
-        <h3> gamifying the learning experience. </h3>
+        <h3> gamifying the learning experience </h3>
         <button type="button" class="btn btn-primary">Get Started</button>
        <div className ="row">
-           <div className="col-md-4">
-                <h2> play</h2>
-                <h2> learn</h2>
-                <h2> create</h2>
+           <div className="col-md-12">
+                <h2>😃play</h2>
+                    <p>10 trivia questions and select level of difficulty</p>
+                <h2>🔮create</h2>
+                    <p>create your own trivia quiz</p>
+                <h2>📚learn</h2>
+                    <p> choose from 20+ trivia categories</p>
             </div>
         </div>
     </div>

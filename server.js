@@ -21,6 +21,8 @@ if(process.env.NODE_ENV === 'production') {
 
 // API routes
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/quiz', require('./routes/api/quiz'));
+app.use('/api/mytrivias', require('./routes/api/quiz'));
 app.use(require('./config/auth'));
 
 // React App entry point (Production only)

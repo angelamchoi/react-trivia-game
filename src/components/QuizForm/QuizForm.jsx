@@ -3,17 +3,18 @@ import { Link } from 'react-router-dom';
 import quizService from "../../utils/quizService";
 import "../QuizForm/QuizForm.css";
 
-const initialState = {
-  a: "",
+class QuizForm extends Component {
+  constructor() {
+  super();
+  this.state = {
+    a: "",
   b: "",
   c: "",
   d: "",
   question: "",
   answer: "",
-};
-
-export default class QuizForm extends React.Component {
-  state = this.props.quiz || initialState;
+  };
+}
 
   componentDidUpdate(prevProps, PrevState) {
     if (this.props.quiz) {
@@ -28,24 +29,31 @@ export default class QuizForm extends React.Component {
     this.setState({ [name]: value });
   };
 
-  clear = () => this.setState(initialState);
+  // clear = () => this.setState(initialState);
 
   handleSubmit = async (e) => {
     e.preventDefault();
-      try {
-        const { isEditing, addQuiz, onQuizUpdate } = this.props;
-        if (isEditing) {
-          const updatedQuiz = await quizService.update({ ...this.state });
-          this.props.history.push("/");
-      } else {
-        const newQuiz = await quizService.create({ ...this.state });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-
-    this.clear();
+    const newQuiz = await quizService.create({...this.state });
+    console.log(newQuiz);
+    this.props.history.push("/mytrivias");
   };
+
+
+    //   try {
+    //     const { isEditing, addQuiz, onQuizUpdate } = this.props;
+    //     if (isEditing) {
+    //       const updatedQuiz = await quizService.update({ ...this.state });
+    //       this.props.history.push("/");
+    //   } else {
+    //     const newQuiz = await quizService.create({ ...this.state });
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
+    // this.clear();
+  // };
+
 
   async componentDidMount() {
     if (this.props.match && this.props.match.params.id) {
@@ -61,12 +69,13 @@ export default class QuizForm extends React.Component {
       <form onSubmit={(e) => this.props.handleSubmit(e)}>
         <div className ="Form">
         <h2>🔮Create a trivia question</h2>
+          <div>
           <label>
             Question:
             <input name="question" value={question} onChange={this.handleChange} />
           </label>
         </div>
-        <div>
+        <div className="card">
           <label>
             A:
             <input name="a" value={a} onChange={this.handleChange} />
@@ -106,10 +115,14 @@ export default class QuizForm extends React.Component {
               {this.props.isEditing ? "Update Quiz" : "Create"}
             </button>
           </div>
+          </div>
+          
       </form>
     );
   }
 }
+
+export default QuizForm;
 
 //   handleSubmit= (e) => {
 //     e.preventDefault();

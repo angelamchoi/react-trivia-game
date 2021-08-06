@@ -107,6 +107,7 @@ render() {
                   quiz={selectedQuiz}
                   addQuiz={this.addQuiz}
                   isEditing={isEditing}
+                  history={history}
                 />
               )}
           />
@@ -114,7 +115,7 @@ render() {
         <Route exact path="/logout" render={() => <LogoutPage />} />
         <Route exact path="/create" render={() => <CreatePage />} />
         <Route exact path="/play" render={() => <QuizPage />} />
-        <Route exact path="/mytrivias" render={() => <QuizList />} />
+        <Route exact path="/mytrivias" render={() => <QuizList quizzes = {quizzes} />} />
       </Switch>
       <Footer />
     </div>

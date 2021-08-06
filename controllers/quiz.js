@@ -1,4 +1,5 @@
-const Quiz = require('../../models/quiz');
+const Quiz = require('../models/quiz');
+
 
 async function index(req, res) {
   const quizzes = await Quiz.find({});
@@ -6,8 +7,13 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
-  const quiz= await Quiz.create(req.body);
-  res.status(201).json(quiz);
+  const quiz= await new Quiz(req.body);
+  try {
+    await quiz.save();
+    res.json(quiz);
+} catch (err) {
+    res.status(400).json(err);
+}
 }
 
 async function show(req, res) {

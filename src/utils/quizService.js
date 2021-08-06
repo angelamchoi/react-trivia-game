@@ -1,11 +1,19 @@
 import tokenService from "./tokenService";
-const BASE_URL = "/api/create/";
+const BASE_URL = "/api/quiz";
 
 function index() {
-  return fetch(BASE_URL)
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken(),
+    },
+  }
+  return fetch("/api/mytrivias", options)
     .then((res) => res.json())
     .catch((err) => console.log("err", err));
 }
+
 
 function getOne(id) {
   return fetch(`${BASE_URL}${id}`)
@@ -24,8 +32,6 @@ function create(quiz) {
   };
   return fetch(BASE_URL, options).then((res) => res.text());
 }
-
-
 
 function update(quiz) {
   console.log(quiz);

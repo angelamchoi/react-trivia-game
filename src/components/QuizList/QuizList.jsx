@@ -1,25 +1,46 @@
+import React , {Component} from "react";
+import quizService from "../../utils/quizService";
 
-import React from 'react'
-
-
-const QuizList = (props) => {
-    return (
-        <div>
-                <h1> 🔮My Trivias!</h1>
-        </div>
-    
-    );
+class QuizList extends Component {
+    constructor() {
+    super();
+    this.state = {
+    quizzes: [],
     };
+  }
+
+async componentDidMount() {
+    const quizzes = await quizService.index();
+    console.log(quizzes);
+    this.setState({quizzes});
+    
+}
+      
+render () {
+  return (
+    <div>
+      <h1> 🔮My Trivias!</h1>
+      <div className="card">
+        <div className="card-grid">
+          {this.state.quizzes.map((quiz, i) => (
+            <div className="container">
+                <div>{quiz.a} </div>
+                <div>{quiz.b} </div>
+                <div>{quiz.c} </div>
+                <div>{quiz.d} </div>
+                <div>{quiz.question} </div>
+                <div>{quiz.answer} </div>
+
+            
+            </div>
+        
+          ))}
+          ;
+        </div>
+      </div>
+    </div>
+  );
+};
+}
 
 export default QuizList;
-
-{/* <h2>💭My Trivia Questions</h2>
-    <div className ="card">
-      <div className="card-grid">
-      {quizData.map((quiz, i) => 
-        <div className="card" key={i} className="myList">
-        {i+1}. {quiz.question}, {quiz.choice1}, {quiz.choice2}, {quiz.choice3}, {quiz.choice4}, {quiz.correctAnswer}
-        <button onClick={() => this.handleDelete(i)} className="btn btn-danger">Delete</button>
-        <button onClick={() => this.handleEdit(i)} className="btn btn-info">Edit</button>
-        </div> */}
-
