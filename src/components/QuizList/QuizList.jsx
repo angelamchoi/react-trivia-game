@@ -26,23 +26,30 @@ class QuizList extends Component {
   }
 
   handleDelete = async (id) => {
-    const newQuiz = await quizService.delete(id);
+    console.log("handleDelete", id);
+    const deletedQuiz = await quizService.delete(id);
+    console.log(deletedQuiz);
+    // this.setState({
+    //   quizzes: deletedQuiz,
+    // });
+  }
+
+  handleQuizUpdate = async (updatedQuiz) => {
+    const quizzes = await quizService.update(updatedQuiz);
     this.setState({
-      quizzes: newQuiz,
+      quizzes: quizzes,
     });
-    console.log(newQuiz);
-  };
 
-  handleEditClicked = (selectedQuiz) =>
-    this.setState({ selectedQuiz, isEditing: true });
+  // handleEditClicked = (selectedQuiz) =>
+  //   this.setState({ selectedQuiz, isEditing: true });
 
-  handleQuizUpdate = (updatedQuiz) => {
-    const quizzes = this.quizzes.map((quiz) => {
-      if (quiz.a === updatedQuiz) {
-        return updatedQuiz;
-      }
-      return quiz;
-    });
+  // handleQuizUpdate = (updatedQuiz) => {
+  //   const quizzes = this.quizzes.map((quiz) => {
+  //     if (quiz.a === updatedQuiz) {
+  //       return updatedQuiz;
+  //     }
+  //     return quiz;
+  //   });
 
     this.setState({ quizzes, isEditing: false });
   };
@@ -65,15 +72,16 @@ class QuizList extends Component {
                 <button
                   type="submit"
                   className="btn btn-danger"
-                  onClick={this.handleDelete}
+                  onClick={this.handleDelete(quiz._id)}
                 >
                   {" "}
                   X
                 </button>
+                
                 <button
                   type="submit"
                   className="btn btn-info"
-                  onClick={this.handleEditedClicked}
+                  onClick={this.handleQuizUpdate}
                 >
                   {" "}
                   Edit
@@ -81,7 +89,7 @@ class QuizList extends Component {
               </div>
               </div>
             ))}
-            ;
+            
           </div>
         </div>
       </div>

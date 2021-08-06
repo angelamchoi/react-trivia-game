@@ -7,7 +7,6 @@ export default class CreatePage extends React.Component {
   state = {
     quizzes: [],
     selectedQuiz: {},
-    isEditing: false
   };
 
   addQuiz = (quiz) => 
@@ -58,34 +57,3 @@ export default class CreatePage extends React.Component {
   }
 }
 
-// class CreatePage extends Component {
-//     constructor() {
-//       super();
-//       this.state = {
-//         question: "",
-//         choice1: "",
-//         choice2: "",
-//         choice3: "",
-//         choice4: "",
-//         correctAnswer: "",
-//       };
-//     }
-//     render() {
-//         const { quiz } = this.state;
-//         return (
-//             <div className="Quizform">
-//                 <h1> 💡Create a Trivia Question</h1>
-//                 <div className="col md-3">
-//                 <ul className="list-group">
-//                     <li className="list-group-item d-flex justify-content-between align-items-center">
-//                         <QuizForm
-//                         />
-//                     </li>
-//                 </ul>
-//             </div>
-//           </div>
-//         );
-//     }
-// }
-
-// export default CreatePage;

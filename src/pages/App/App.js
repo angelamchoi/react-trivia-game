@@ -23,6 +23,7 @@ class App extends Component {
     quiz: [],
     selectedQuiz: {},
     isEditing: false
+ 
   };
 }
   handleLogout = () => {
@@ -49,8 +50,6 @@ class App extends Component {
   addQuiz = (quiz) => 
     this.setState({ quizzes: [...this.state.quizzes, quiz] });
 
-  handleEditClicked = (selectedQuiz) =>
-    this.setState({ selectedQuiz, isEditing: true });
 
   handleQuizUpdate = (updatedQuiz) => {
     const quizzes = this.quizzes.map((quiz) => {
@@ -60,11 +59,11 @@ class App extends Component {
       return quiz;
     });
 
-    this.setState({ quizzes, isEditing: false });
+    this.setState({ quizzes });
   };
 
 render() {
-  const { quizzes, selectedQuiz, isEditing } = this.state;
+  const { quizzes, selectedQuiz } = this.state;
   return (
     <div className="App">
       <header className="App-header">
@@ -106,7 +105,7 @@ render() {
                 <QuizForm
                   quiz={selectedQuiz}
                   addQuiz={this.addQuiz}
-                  isEditing={isEditing}
+                  // isEditing={isEditing}
                   history={history}
                 />
               )}

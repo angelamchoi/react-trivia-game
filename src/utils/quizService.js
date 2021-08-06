@@ -46,24 +46,18 @@ function update(quiz) {
   return fetch(BASE_URL + quiz._id, options).then((res) => res.json());
 }
 
-// function deleteOne(id) {
-//   const options = {
-//     method: "DELETE",
-//     headers: {
-//       "Content-type": "application/json",
-//       Authorization: "Bearer " + tokenService.getToken(),
-//     },
-//   };
-//   return fetch("/api/mytrivias" + id, options).then((res) => res.json());
-// }
-
-async function deleteOne(id) {
-  const res = await fetch(`/api/mytrivias/${id}`, {
+function deleteOne(id) {
+  const options = {
     method: "DELETE",
-  });
-  const result = await res.json();
-  return result;
+    headers: {
+      "Content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken(),
+    },
+  };
+  return fetch("/api/mytrivias/"+ id, options).then((res) => res.json());
+  
 }
+
 
 
 export default {
