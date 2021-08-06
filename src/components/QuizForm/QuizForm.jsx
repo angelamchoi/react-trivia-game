@@ -7,6 +7,7 @@ class QuizForm extends Component {
   constructor() {
     super();
     this.state = {
+      category: "",
       a: "",
       b: "",
       c: "",
@@ -42,11 +43,8 @@ class QuizForm extends Component {
     const { a, b, c, d, question, answer } = this.state;
     return (
       <form onSubmit={(e) => this.props.handleSubmit(e)}>
-        {/* <div className="Form"> */}
           <h2>🔮Create a trivia question</h2>
-       
-            <div className="form-group">
-          
+            <div className="form-group">      
                 <div className="col-md-3">
                   <label>
                     Question:

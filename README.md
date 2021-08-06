@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# 🔮quizzify
+quizzify is a web application that allows you to add trivia questions and play trivia games to enhance your trivia gaming skills.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Inspiration
+I love learning, but if the learning experience is gamified, I will be able to retain the information longer and learn more. I wanted to create an application for people to continue to learn new things while having fun. 
 
-## Available Scripts
+## Screenshots
+Landing page
+![image](screenshots/home.jpg)
+Create a trivia
+![image](screenshots/add_system.PNG)
+View all trivias
+![image](screenshots/systems.PNG)
+Play trivia
 
-In the project directory, you can run:
 
-### `npm start`
+## Technologies Used
+- React.js
+- Node.js
+- Express.js
+- JavaScript
+- CSS
+- Bootstrap
+- MongoDB
+- Mongoose
+- Token-based authentication
+- AJAX
+- RESTful routing
+- Deployed on Heroku
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting Started
+Access the gamebreak web app [here](https://gamebreakk.herokuapp.com/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Planning Process
 
-### `npm test`
+### 1️⃣ Entity Relationship Diagram
+ERD can be found [here](https://lucid.app/lucidchart/29ba2d8e-8464-40bf-b81c-e8fd676560dd/edit?page=0_0#)
+- The ERD helped us to create and structure our models and deeply think about their relationships such as one to many, many to one, or many to many. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2️⃣User Stories
+The Trello board for user stories, product roadmap, and tasks can be found [here](https://trello.com/b/YdIWpqHE/gamebreak).
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3️⃣ Wireframes
+Wireframes can  found [here](https://wireframepro.mockflow.com/view/M26cb0d3c6671fbc24524cd94394344351624502998157)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Reflection / Difficulties Faced
+❤️Things we enjoyed:
+- Incoporating our ideas 
+    - If either us of had an idea we ran it by each other and took ownership and did our best to execute it. 
+- Front-end & Back-end
+    - We both took turns working on front-end and back-end
+- Pair programming 
+    - We both learned so much from each other. We would teach other when we solved something differently or added something new.
 
-### `npm run eject`
+⛰️Difficulties Faced: 
+- Routing
+- 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+📚Lessons Learned:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Teamwork makes the dream work
+    - Your coding and problem solving skills go further when working together in a team environment
+    - Encountered more problems, but also learned how to solve them quicker 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Take more risks
+    - At first we were scared to push anything on to our main branch. Later on we realized that we can always retrieve our previous work, so we began to experiment freely. 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Prioritization
+    - We had an endless list of bugs and new features we wanted to implement occuring simultaneously. We decided to reprioritize and not include the store model and focus on games and systems. 
 
-## Learn More
+- Documenting our technical issues
+    - We encountered several technical issues. We began to document our technical issues for future reference and in case one of our teammates encounters it. The following are the technical issues we resolved. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+        - Migration issues 
+        - Git conflicts
+        - Integrity error on Django
+        - Working with databases in SQL
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Next Steps
+The following are the next step in improving our application:
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- View games based on gaming system
+- Incorporate Trivia API for play games section
+- Sort trivia questions
