@@ -7,28 +7,28 @@
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
     background-color: white;
     transform-style: preserve-3d;
-    transition: 150ms;
     cursor: pointer;
-    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
-  }
-
+    height: 400px;
+    width: 500px;
+}
   .form-group {
     display: flex;
     flex-direction: column;
     margin: .5rem;
+   
   }
 
   .container {
-    max-width: 900px;
-    margin: 1rem 2rem;
+    max-width: 250px;
+  
   }
 
 
 .card-grid {
-    display: grid;
+    display: flex;
     align-items: center;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 2rem;
+    padding: 10px;
   }
 
   
@@ -37,4 +37,12 @@
     border-radius: .3em;
     border: none;
     cursor: pointer;
+  }
+
+  label {
+    font-size: 15px;
+  }
+
+  input {
+    width: 100%;
   }

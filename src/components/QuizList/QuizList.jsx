@@ -1,37 +1,60 @@
-import React , {Component} from "react";
+import React, { Component } from "react";
 import quizService from "../../utils/quizService";
 
 class QuizList extends Component {
-    constructor() {
+  constructor() {
     super();
     this.state = {
-    quizzes: [],
+      quizzes: [],
+      quiz: [],
     };
   }
 
-async componentDidMount() {
+  async componentDidMount() {
     const quizzes = await quizService.index();
     console.log(quizzes);
-    this.setState({quizzes});
-    
-}
+    this.setState({ quizzes });
+  }
+
+  componentDidUpdate(prevProps, PrevState) {
+    if (this.props.quiz) {
+      if (prevProps.quiz.id !== this.props.quiz.id) {
+        this.setState({ ...this.props.quiz });
+      }
+    }
+  }
 
   handleDelete = async (id) => {
-    const deletedQuiz = await quizService.delete(id);
+    const newQuiz = await quizService.delete(id);
     this.setState({
-      quizzes: deletedQuiz,
+      quizzes: newQuiz,
     });
-    console.log(deletedQuiz);
-  }
-      
-render () {
-  return (
-    <div>
-      <h1> 🔮My Trivias!</h1>
-      <div className="card">
-        <div className="card-grid">
-          {this.state.quizzes.map((quiz, i) => (
-            <div className="container">
+    console.log(newQuiz);
+  };
+
+  handleEditClicked = (selectedQuiz) =>
+    this.setState({ selectedQuiz, isEditing: true });
+
+  handleQuizUpdate = (updatedQuiz) => {
+    const quizzes = this.quizzes.map((quiz) => {
+      if (quiz.a === updatedQuiz) {
+        return updatedQuiz;
+      }
+      return quiz;
+    });
+
+    this.setState({ quizzes, isEditing: false });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1> 🔮My Trivias!</h1>
+        <div className="card">
+          <div className="card-grid">
+            {this.state.quizzes.map((quiz, i) => (
+              <div className="container">
+                <div className="card">
                 <div>{quiz.a} </div>
                 <div>{quiz.b} </div>
                 <div>{quiz.c} </div>
@@ -49,24 +72,24 @@ render () {
                 <button
                   type="submit"
                   className="btn btn-info"
-                  onClick={this.handleSubmit}
+                  onClick={this.handleEditedClicked}
                 >
                   {" "}
                   Edit
                 </button>
-            </div>
-        
-          ))}
-          ;
+              </div>
+              </div>
+            ))}
+            ;
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+      
+    );
+  }
 }
 
 export default QuizList;
-
 
 // import React, { Component } from "react";
 // import quizService from "../../utils/quizService";
@@ -90,8 +113,7 @@ export default QuizList;
 //     this.props.setQuiz(newQuiz);
 //   };
 
-  // clear = () => this.setState(initialState);
-
+// clear = () => this.setState(initialState);
 
 //   render() {
 //     return (
@@ -132,5 +154,3 @@ export default QuizList;
 //     );
 //   }
 // }
-
-
