@@ -108,7 +108,7 @@ class QuizForm extends Component {
                   <div>
                     <button
                       type="submit"
-                      className="btn btn-primary"
+                      className="btn btn-info"
                       onClick={this.handleSubmit}
                     >
                       {this.props.isEditing ? "Update Quiz" : "Create"}

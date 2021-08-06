@@ -9,7 +9,7 @@ return (
     <div className='container-fluid'>
         <h1> quizzify</h1>
         <h3> gamifying the learning experience </h3>
-        <button type="button" class="btn btn-primary">Get Started</button>
+        <br></br>
        <div className ="row">
            <div className="col-md-12">
                 <h2>😃play</h2>
@@ -17,7 +17,9 @@ return (
                 <h2>🔮create</h2>
                     <p>create your own trivia quiz</p>
                 <h2>📚learn</h2>
-                    <p> choose from 20+ trivia categories</p>
+                    <p> choose from 20+ trivia categories  </p>
+                    <br></br>
+                    <br></br>
             </div>
         </div>
     </div>
