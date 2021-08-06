@@ -4,10 +4,12 @@
     flex-direction: column;
     margin: .5rem;
     align-items: center;
+    color: white;
   }
 
   .container {
     max-width: 550px;
+    color: white;
   
   }
   
@@ -18,10 +20,13 @@
     cursor: pointer;
   }
 
+
   label {
     font-size: 18px;
+    color: white;
+    padding: 5px;
   }
 
-  input textarea {
-    width: 100%;
+  h2 {
+    color: aquamarine;
   }

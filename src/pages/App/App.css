@@ -18,8 +18,8 @@ main {
 * {
   font-family: 'Jura', sans-serif;
   scrollbar-width: thin;
- 
-
+  background-color: #282c34;
+  color: white;
 }
 
 *::-webkit-scrollbar {
@@ -39,7 +39,6 @@ main {
 }
 
 .App-header {
-  background-color: #282c34; 
   display: flex;
   flex-direction: column;
   align-items: center;

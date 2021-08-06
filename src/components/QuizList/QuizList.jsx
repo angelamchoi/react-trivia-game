@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import quizService from "../../utils/quizService";
+import "../QuizList/QuizList.css";
 
 class QuizList extends Component {
   constructor() {
@@ -49,7 +50,7 @@ class QuizList extends Component {
   render() {
     return (
       <div>
-        <h1> 🔮My Trivias!</h1>
+        <h1> 🔮My Trivias</h1>
         <div className="card-list">
           <div className="card-grid">
             {this.state.quizzes.map((quiz, i) => (
