@@ -21,6 +21,7 @@ class QuizForm extends Component {
     this.setState({ [name]: value });
   };
 
+
   handleSubmit = async (e) => {
     e.preventDefault();
     const newQuiz = await quizService.create({ ...this.state });

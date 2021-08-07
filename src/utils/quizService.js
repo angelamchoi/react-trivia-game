@@ -42,7 +42,7 @@ function update(quiz) {
     },
     body: JSON.stringify(quiz),
   };
-  return fetch(BASE_URL + quiz._id, options).then((res) => res.json());
+  return fetch("/api/mytrivias/" + quiz._id, options).then((res) => res.json());
 }
 
 function deleteOne(id) {

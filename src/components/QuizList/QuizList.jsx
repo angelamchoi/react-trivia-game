@@ -18,6 +18,7 @@ class QuizList extends Component {
   //   }
   // }
 
+
   handleDelete = async (id) => {
     console.log("handleDelete", id);
     const deletedQuiz = await quizService.delete(id);
@@ -32,16 +33,6 @@ class QuizList extends Component {
     });
   };
 
-  // handleQuizUpdate = (updatedQuiz) => {
-  //   const quizzes = this.quizzes.map((quiz) => {
-  //     if (quiz.a === updatedQuiz) {
-  //       return updatedQuiz;
-  //     }
-  //     return quiz;
-  //   });
-
-  //   this.setState({ quizzes, isEditing: false });
-  // };
 
   render() {
     return (

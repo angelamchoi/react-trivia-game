@@ -24,7 +24,7 @@ View all trivias
 Play trivia
 ![image](screenshots/playtrivia.PNG)
 
-## Technologies Used
+## **Technologies Used**
 - React.js
 - Node.js
 - Express.js
@@ -51,6 +51,7 @@ Wireframes can be found [here](https://github.com/angelamchoi/react-trivia-game/
 
 ⛰️Difficulties Faced: 
 - Routing
+
 
 📚Lessons Learned:
 
