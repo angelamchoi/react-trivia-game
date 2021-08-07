@@ -8,12 +8,11 @@ function index() {
       "Content-type": "application/json",
       Authorization: "Bearer " + tokenService.getToken(),
     },
-  }
+  };
   return fetch("/api/mytrivias", options)
     .then((res) => res.json())
     .catch((err) => console.log("err", err));
 }
-
 
 function getOne(id) {
   return fetch(`${BASE_URL}${id}`)
@@ -38,7 +37,7 @@ function update(quiz) {
   const options = {
     method: "PUT",
     headers: {
-      'Content-type': 'application/json',
+      "Content-type": "application/json",
       Authorization: "Bearer " + tokenService.getToken(),
     },
     body: JSON.stringify(quiz),
@@ -54,11 +53,8 @@ function deleteOne(id) {
       Authorization: "Bearer " + tokenService.getToken(),
     },
   };
-  return fetch("/api/mytrivias/"+ id, options).then((res) => res.json());
-  
+  return fetch("/api/mytrivias/" + id, options).then((res) => res.json());
 }
-
-
 
 export default {
   index,
@@ -67,4 +63,3 @@ export default {
   update,
   delete: deleteOne,
 };
-

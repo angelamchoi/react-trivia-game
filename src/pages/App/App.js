@@ -30,6 +30,7 @@ class App extends Component {
     this.setState({ user: null });
   };
 
+
   async componentDidMount() {
     await this.getQuiz();
     if (this.state.user) {
@@ -99,14 +100,13 @@ class App extends Component {
               <QuizForm
                 quiz={selectedQuiz}
                 addQuiz={this.addQuiz}
-                // isEditing={isEditing}
+                getQuiz={this.getQuiz}
                 history={history}
               />
             )}
           />
 
           <Route exact path="/logout" render={() => <LogoutPage />} />
-          <Route exact path="/create" render={() => <CreatePage />} />
           <Route exact path="/play" render={() => <QuizPage />} />
           <Route
             exact

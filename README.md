@@ -57,6 +57,7 @@ Wireframes can  found [here](https://wireframepro.mockflow.com/view/M26cb0d3c667
 ## Next Steps
 The following are the next step in improving the application:
 
+- Form validation
 - Incorporate Trivia API under play games section
 - Sort trivia questions
 - Text to speech option

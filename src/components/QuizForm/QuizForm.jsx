@@ -4,10 +4,9 @@ import quizService from "../../utils/quizService";
 import "../QuizForm/QuizForm.css";
 
 class QuizForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      category: "",
       a: "",
       b: "",
       c: "",
@@ -22,12 +21,10 @@ class QuizForm extends Component {
     this.setState({ [name]: value });
   };
 
-  // clear = () => this.setState(initialState);
-
   handleSubmit = async (e) => {
     e.preventDefault();
     const newQuiz = await quizService.create({ ...this.state });
-    console.log(newQuiz);
+    await this.props.getQuiz();
     this.props.history.push("/mytrivias");
   };
 
@@ -43,79 +40,77 @@ class QuizForm extends Component {
     const { a, b, c, d, question, answer } = this.state;
     return (
       <form onSubmit={(e) => this.props.handleSubmit(e)}>
-          <h2>🔮Create a trivia question</h2>
-            <div className="form-group">      
-                <div className="col-md-3">
-                  <label>
-                    Question:
-                    <input
-                      type="textarea"
-                      name="question"
-                      value={question}
-                      placeholder="How many moons are on Mars?"
-                      onChange={this.handleChange}
-                    />
-                  </label>
-                  <label>
-                    A:
-                    <input
-                      type="text"
-                      name="a"
-                      value={a}
-                      placeholder="5"
-                      onChange={this.handleChange}
-                    />
-                  </label>
-                  <label>
-                    B:
-                    <input
-                      name="b"
-                      value={b}
-                      placeholder="16"
-                      onChange={this.handleChange}
-                    />
-                  </label>
-                  <label>
-                    C:
-                    <input
-                      name="c"
-                      value={c}
-                      placeholder="2"
-                      onChange={this.handleChange}
-                    />
-                  </label>
-                  <label>
-                    D:
-                    <input
-                      value={d}
-                      name="d"
-                      placeholder="1"
-                      onChange={this.handleChange}
-                    />
-                  </label>
-                  <label>
-                    Answer:
-                    <input
-                      value={answer}
-                      name="answer"
-                      placeholder="2"
-                      onChange={this.handleChange}
-                    />
-                  </label>
+        <h2>🔮create a trivia </h2>
+        <div className="form-group">
+          <div className="col-md-3">
+            <label>
+              Question:
+              <input
+                type="textarea"
+                name="question"
+                value={question}
+                placeholder="How many moons are on Mars?"
+                onChange={this.handleChange}
+              />
+            </label>
+            <label>
+              A:
+              <input
+                type="text"
+                name="a"
+                value={a}
+                placeholder="5"
+                onChange={this.handleChange}
+              />
+            </label>
+            <label>
+              B:
+              <input
+                name="b"
+                value={b}
+                placeholder="16"
+                onChange={this.handleChange}
+              />
+            </label>
+            <label>
+              C:
+              <input
+                name="c"
+                value={c}
+                placeholder="2"
+                onChange={this.handleChange}
+              />
+            </label>
+            <label>
+              D:
+              <input
+                value={d}
+                name="d"
+                placeholder="1"
+                onChange={this.handleChange}
+              />
+            </label>
+            <label>
+              Answer:
+              <input
+                value={answer}
+                name="answer"
+                placeholder="2"
+                onChange={this.handleChange}
+              />
+            </label>
 
-                  <div>
-                    <button
-                      type="submit"
-                      className="btn btn-info"
-                      onClick={this.handleSubmit}
-                    >
-                      {this.props.isEditing ? "Update Quiz" : "Create"}
-                    </button>
-                  </div>
-                </div>
-              </div>
-          
-        {/* </div> */}
+            <div>
+              <button
+                type="submit"
+                className="btn btn-info"
+                onClick={this.handleSubmit}
+              >
+                {this.props.isEditing ? "Update Quiz" : "Create"}
+              </button>
+            </div>
+          </div>
+        </div>
       </form>
     );
   }
