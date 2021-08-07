@@ -13,7 +13,7 @@ Home page
 
 | Log in | Signup |
 | ---- | ------- |
-|![image](screenshots/login2.PNG) | ![image](screenshots/signup.PNG)    
+|![image](screenshots/login3.PNG) | ![image](screenshots/signup.PNG)    
   
 Create a trivia
 ![image](screenshots/create.PNG)
@@ -40,18 +40,17 @@ Play trivia
 
 ## Planning Process
 
-### User Stories
+### 1️⃣ User Stories
 The Trello board for user stories, product roadmap, and tasks can be found [here](https://trello.com/b/3Jbt30V1/quizzify).
 
-### Wireframes
-Wireframes can  found under wireframe pics folder
+### 2️⃣ Wireframes
+Wireframes can be found [here](https://github.com/angelamchoi/react-trivia-game/tree/main/wireframe_pics)
 
 
 ## Reflection / Difficulties Faced
 
 ⛰️Difficulties Faced: 
 - Routing
-- 
 
 📚Lessons Learned:
 
