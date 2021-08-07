@@ -56,7 +56,7 @@ Wireframes can be found [here](https://github.com/angelamchoi/react-trivia-game/
 📚Lessons Learned:
 
 - Utilizing Developer tools
-    - React Inspector, `console.log`, Postman
+    - React Inspector, `console.log`, Postman, and debugger
 - Deploy frequently
     - Every time I added a new feature I deployed and this helped me identify and fix issues
 

@@ -10,13 +10,13 @@ class QuizList extends Component {
     };
   }
 
-  // componentDidUpdate(prevProps, PrevState) {
-  //   if (this.props.quiz) {
-  //     if (prevProps.quiz.id !== this.props.quiz.id) {
-  //       this.setState({ ...this.props.quiz });
-  //     }
-  //   }
-  // }
+  componentDidUpdate(prevProps, PrevState) {
+    if (this.props.quiz) {
+      if (prevProps.quiz.id !== this.props.quiz.id) {
+        this.setState({ ...this.props.quiz });
+      }
+    }
+  }
 
 
   handleDelete = async (id) => {
