@@ -5,18 +5,24 @@ quizzify is a web application that allows you to add trivia questions and play t
 I love learning, but if the learning experience is gamified, I will be able to retain the information longer and learn more. I wanted to create an application for people to continue to learn new things while having fun.
 
 ## Getting Started
-Access the gamebreak web app [here](https://quizzifyme.herokuapp.com/)
+Access the quizzify web app [here](https://quizzifyme.herokuapp.com/)
 
 ## Screenshots
-Landing page
-![image](screenshots/home.jpg)
-Login page
-Sign up page
+Home page
+![image](screenshots/homepage.PNG)
+
+| Log in | Signup |
+| ---- | ------- |
+|![image](screenshots/login2.PNG) | ![image](screenshots/signup.PNG)    
+  
 Create a trivia
-![image](screenshots/add_system.PNG)
+![image](screenshots/create.PNG)
+
 View all trivias
-![image](screenshots/systems.PNG)
+![image](screenshots/trivias.PNG)
+
 Play trivia
+![image](screenshots/playtrivia.PNG)
 
 ## Technologies Used
 - React.js
@@ -38,7 +44,7 @@ Play trivia
 The Trello board for user stories, product roadmap, and tasks can be found [here](https://trello.com/b/3Jbt30V1/quizzify).
 
 ### Wireframes
-Wireframes can  found [here](https://wireframepro.mockflow.com/view/M26cb0d3c6671fbc24524cd94394344351624502998157)
+Wireframes can  found under wireframe pics folder
 
 
 ## Reflection / Difficulties Faced
@@ -49,10 +55,10 @@ Wireframes can  found [here](https://wireframepro.mockflow.com/view/M26cb0d3c667
 
 📚Lessons Learned:
 
-- Utilizing tools
-    - Inspect, console.log, postman
+- Utilizing Developer tools
+    - React Inspector, `console.log`, Postman
 - Deploy frequently
-    - Everytime I added a new feature I deployed and this helped me identify and fix issues
+    - Every time I added a new feature I deployed and this helped me identify and fix issues
 
 ## Next Steps
 The following are the next step in improving the application:
@@ -62,4 +68,3 @@ The following are the next step in improving the application:
 - Sort trivia questions
 - Text to speech option
 - Be able to favorite a trivia question
-- Share trivia question
